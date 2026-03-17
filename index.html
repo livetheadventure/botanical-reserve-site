@@ -66,6 +66,36 @@ display:none;
 pointer-events:none;
 }
 
+/* new text overlay */
+.headline{
+position:fixed;
+left:50%;
+top:67%;
+transform:translateX(-50%);
+z-index:3;
+text-align:center;
+width:min(90vw, 720px);
+padding:0 16px;
+box-sizing:border-box;
+}
+
+.headline-main{
+margin:0 0 8px 0;
+font-size:24px;
+line-height:1.35;
+font-weight:500;
+color:rgba(38,38,38,0.96);
+text-shadow:0 1px 10px rgba(255,255,255,0.55);
+}
+
+.headline-sub{
+margin:0;
+font-size:14px;
+line-height:1.4;
+color:rgba(45,45,45,0.92);
+text-shadow:0 1px 8px rgba(255,255,255,0.60);
+}
+
 /* bottom bar wrap */
 .form-wrap{
 position:fixed;
@@ -83,10 +113,10 @@ gap:8px;
 .form-note{
 margin:0;
 font-size:12px;
-color:rgba(55,55,55,0.88);
+color:rgba(55,55,55,0.90);
 text-align:center;
 letter-spacing:0.01em;
-text-shadow:0 1px 6px rgba(255,255,255,0.35);
+text-shadow:0 1px 6px rgba(255,255,255,0.45);
 }
 
 /* form bar */
@@ -167,6 +197,23 @@ height:auto;
 box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
+.headline{
+top:63%;
+width:min(92vw, 420px);
+padding:0 14px;
+}
+
+.headline-main{
+font-size:17px;
+line-height:1.35;
+margin-bottom:6px;
+}
+
+.headline-sub{
+font-size:12px;
+line-height:1.35;
+}
+
 .form-wrap{
 bottom:14px;
 gap:6px;
@@ -221,8 +268,13 @@ alt="The Botanical Reserve — Fresh Flower Kits Delivered Weekly. Designed by Y
 class="mobile-img"
 alt="The Botanical Reserve — Fresh Flower Kits Delivered Weekly. Designed by You.">
 
+<div class="headline">
+  <p class="headline-main">Fresh Flower Kits Delivered Weekly. Designed by You.</p>
+  <p class="headline-sub">Launching soon in limited Vancouver neighbourhoods</p>
+</div>
+
 <div class="form-wrap">
-  <p class="form-note">Launching soon in Vancouver • Limited weekly availability</p>
+  <p class="form-note">Join the waitlist for early access</p>
 
   <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
     <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" autocomplete="email" required>
