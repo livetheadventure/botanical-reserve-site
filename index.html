@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>The Botanical Reserve | DIY Flower Delivery Vancouver</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="DIY flower delivery in Vancouver. Fresh flowers delivered for you to design your own bouquet at home. The Botanical Reserve.">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="The Botanical Reserve">
+<meta property="og:description" content="Fresh Flowers. Designed by You.">
+<meta property="og:image" content="frontpage.png">
+<meta property="og:url" content="https://botanicalreserve.ca">
+
+<link rel="canonical" href="https://botanicalreserve.ca">
+
+<style>
+
+html, body{
+margin:0;
+padding:0;
+height:100%;
+overflow:hidden;
+}
+
+/* blurred background */
+
+.bg{
+position:fixed;
+inset:0;
+background-image:url("frontpage.png");
+background-size:cover;
+background-position:center;
+filter:blur(18px);
+transform:scale(1.1);
+}
+
+/* center poster */
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+img{
+position:relative;
+z-index:2;
+max-width:100%;
+max-height:100vh;
+width:auto;
+height:auto;
+display:block;
+box-shadow:0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* mobile */
+
+@media (max-width:768px){
+
+.bg{
+transform:scale(1.15);
+}
+
+img{
+max-width:92vw;
+max-height:92vh;
+width:auto;
+height:auto;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Hidden heading for Google -->
+<h1 style="position:absolute;left:-9999px;">
+The Botanical Reserve – DIY Flower Delivery Vancouver
+</h1>
+
+<div class="bg"></div>
+
+<img src="frontpage.png"
+alt="The Botanical Reserve — Fresh Flowers. Designed by You."
+loading="eager">
+
+</body>
+</html>
