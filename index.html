@@ -12,7 +12,7 @@
 <meta name="robots" content="index, follow">
 
 <meta property="og:title" content="The Botanical Reserve">
-<meta property="og:description" content="Fresh Flowers. Designed by You.">
+<meta property="og:description" content="Fresh Flower Kits Delivered Weekly. Designed by You.">
 <meta property="og:image" content="frontpage.png">
 <meta property="og:url" content="https://botanicalreserve.ca">
 
@@ -38,11 +38,13 @@ font-family:Georgia, serif;
 .bg{
 position:fixed;
 inset:0;
+z-index:0;
 background-image:url("frontpage.png");
 background-size:cover;
 background-position:center;
 filter:blur(18px);
 transform:scale(1.1);
+pointer-events:none;
 }
 
 /* desktop image */
@@ -55,11 +57,13 @@ width:auto;
 height:auto;
 display:block;
 box-shadow:0 10px 40px rgba(0,0,0,0.15);
+pointer-events:none;
 }
 
 /* mobile image */
 .mobile-img{
 display:none;
+pointer-events:none;
 }
 
 /* bottom bar wrap */
@@ -199,7 +203,6 @@ padding:10px 12px;
 
 }
 </style>
-
 </head>
 
 <body>
@@ -212,19 +215,19 @@ The Botanical Reserve – DIY Flower Delivery Vancouver
 
 <img src="frontpage.png"
 class="desktop-img"
-alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You.">
+alt="The Botanical Reserve — Fresh Flower Kits Delivered Weekly. Designed by You.">
 
 <img src="frontpage-mobile.png"
 class="mobile-img"
-alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You.">
+alt="The Botanical Reserve — Fresh Flower Kits Delivered Weekly. Designed by You.">
 
 <div class="form-wrap">
- 
+  <p class="form-note">Launching soon in Vancouver • Limited weekly availability</p>
 
   <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <input type="text" name="neighborhood" placeholder="Neighbourhood(optional)">
-    <button type="submit">Join Neighbourhood Waitlist</button>
+    <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" autocomplete="email" required>
+    <input type="text" name="neighborhood" placeholder="Neighbourhood (optional)" aria-label="Neighbourhood" autocomplete="address-level2">
+    <button type="submit">Get Early Access</button>
   </form>
 </div>
 
