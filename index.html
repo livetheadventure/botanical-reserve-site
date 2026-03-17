@@ -9,6 +9,7 @@
 <meta name="description" content="The Botanical Reserve offers fresh flower kits delivered weekly in Vancouver. Design your own bouquet at home with curated stems and simple, beautiful presentation.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f7f3ee">
+<meta name="author" content="The Botanical Reserve">
 
 <link rel="canonical" href="https://botanicalreserve.ca">
 
@@ -16,13 +17,16 @@
 <meta property="og:title" content="The Botanical Reserve">
 <meta property="og:description" content="Fresh Flower Kits. Delivered Weekly. Designed by You.">
 <meta property="og:image" content="https://botanicalreserve.ca/frontpage.png">
+<meta property="og:image:alt" content="The Botanical Reserve flower kits landing page">
 <meta property="og:url" content="https://botanicalreserve.ca">
 <meta property="og:site_name" content="The Botanical Reserve">
+<meta property="og:locale" content="en_CA">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Botanical Reserve">
 <meta name="twitter:description" content="Fresh Flower Kits. Delivered Weekly. Designed by You.">
 <meta name="twitter:image" content="https://botanicalreserve.ca/frontpage.png">
+<meta name="twitter:image:alt" content="The Botanical Reserve flower kits landing page">
 
 <link rel="preload" as="image" href="frontpage.png">
 <link rel="preload" as="image" href="frontpage-mobile.png">
@@ -36,7 +40,10 @@
       "@id": "https://botanicalreserve.ca/#organization",
       "name": "The Botanical Reserve",
       "url": "https://botanicalreserve.ca",
-      "logo": "https://botanicalreserve.ca/frontpage.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://botanicalreserve.ca/frontpage.png"
+      },
       "image": "https://botanicalreserve.ca/frontpage.png",
       "description": "Fresh flower kits delivered weekly in Vancouver. Designed by you."
     },
@@ -47,21 +54,25 @@
       "url": "https://botanicalreserve.ca",
       "image": "https://botanicalreserve.ca/frontpage.png",
       "description": "Fresh flower kits delivered weekly in Vancouver for customers to arrange at home.",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Vancouver",
         "addressRegion": "BC",
         "addressCountry": "CA"
       },
-      "areaServed": {
-        "@type": "City",
-        "name": "Vancouver"
-      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Vancouver"
+        }
+      ],
       "knowsAbout": [
         "DIY flower kits",
         "Weekly flower delivery",
         "Fresh flowers",
-        "At-home bouquet arranging"
+        "At-home bouquet arranging",
+        "Curated flower stems"
       ],
       "brand": {
         "@id": "https://botanicalreserve.ca/#organization"
@@ -78,6 +89,13 @@
       "inLanguage": "en-CA"
     },
     {
+      "@type": "ImageObject",
+      "@id": "https://botanicalreserve.ca/#primaryimage",
+      "url": "https://botanicalreserve.ca/frontpage.png",
+      "contentUrl": "https://botanicalreserve.ca/frontpage.png",
+      "caption": "The Botanical Reserve flower kits landing page"
+    },
+    {
       "@type": "WebPage",
       "@id": "https://botanicalreserve.ca/#webpage",
       "url": "https://botanicalreserve.ca",
@@ -86,6 +104,12 @@
         "@id": "https://botanicalreserve.ca/#website"
       },
       "about": {
+        "@id": "https://botanicalreserve.ca/#business"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://botanicalreserve.ca/#primaryimage"
+      },
+      "mainEntity": {
         "@id": "https://botanicalreserve.ca/#business"
       },
       "description": "Fresh flower kits delivered weekly in Vancouver."
@@ -111,7 +135,7 @@ font-family:Georgia, serif;
 background:#f7f3ee;
 }
 
-/* hidden seo text */
+/* hidden seo/accessibility text */
 .visually-hidden{
 position:absolute;
 width:1px;
@@ -397,7 +421,9 @@ fetchpriority="high">
 
 <div class="form-wrap">
   <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form" aria-label="Join limited release form">
+    <label for="email" class="visually-hidden">Email address</label>
     <input
+      id="email"
       type="email"
       name="email"
       placeholder="Enter your email"
@@ -405,7 +431,8 @@ fetchpriority="high">
       autocomplete="email"
       required>
 
-    <select name="neighborhood" aria-label="Select your neighbourhood">
+    <label for="neighborhood" class="visually-hidden">Select your neighbourhood</label>
+    <select id="neighborhood" name="neighborhood" aria-label="Select your neighbourhood">
       <option value="">Select your neighbourhood</option>
       <option>South Granville</option>
       <option>Kerrisdale</option>
