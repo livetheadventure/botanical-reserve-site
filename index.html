@@ -107,6 +107,17 @@ align-items:center;
 gap:8px;
 }
 
+/* helper note */
+.form-note{
+margin:0;
+font-size:11px;
+color:rgba(55,55,55,0.75);
+text-align:center;
+letter-spacing:0.02em;
+font-style:italic;
+text-shadow:0 1px 6px rgba(255,255,255,0.35);
+}
+
 /* form bar */
 .email-form{
 display:flex;
@@ -225,6 +236,11 @@ bottom:14px;
 gap:6px;
 }
 
+.form-note{
+font-size:10px;
+max-width:240px;
+}
+
 .email-form{
 flex-direction:column;
 gap:6px;
@@ -280,8 +296,9 @@ alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by 
   <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
     <input type="email" name="email" placeholder="Enter your email" required>
     <input type="text" name="neighborhood" placeholder="Neighbourhood(optional)">
-    <button type="submit">Join Neighbourhood Waitlist</button>
+    <button type="submit">Join Limited Release</button>
   </form>
+  <p class="form-note">Available soon in select Vancouver neighbourhoods</p>
 </div>
 
 </body>
