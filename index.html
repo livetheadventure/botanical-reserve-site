@@ -69,12 +69,13 @@ bottom:42px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
+flex-direction:column;
 align-items:center;
 gap:10px;
 }
 
 .email-form input{
-width:220px;
+width:240px;
 padding:12px 16px;
 border:none;
 border-radius:999px;
@@ -92,10 +93,11 @@ color:#666;
 }
 
 .email-form button{
+width:240px;
 background:rgba(255,255,255,0.9);
 color:#2f2f2f;
 border:none;
-padding:12px 22px;
+padding:12px 18px;
 font-size:14px;
 letter-spacing:0.02em;
 border-radius:999px;
@@ -134,7 +136,6 @@ box-shadow:0 10px 40px rgba(0,0,0,0.15);
 
 .email-form{
 bottom:28px;
-flex-direction:column;
 gap:8px;
 }
 
@@ -145,9 +146,9 @@ padding:10px 14px;
 }
 
 .email-form button{
-font-size:13px;
-padding:10px 18px;
 width:190px;
+font-size:13px;
+padding:10px 16px;
 }
 
 }
@@ -172,8 +173,13 @@ class="mobile-img"
 alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 
 <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
+
   <input type="email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Get Early Access</button>
+
+  <input type="text" name="neighborhood" placeholder="Your neighborhood (optional)">
+
+  <button type="submit">Join Your Neighborhood Waitlist</button>
+
 </form>
 
 </body>
