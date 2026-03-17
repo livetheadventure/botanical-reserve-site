@@ -61,16 +61,40 @@ box-shadow:0 10px 40px rgba(0,0,0,0.15);
 display:none;
 }
 
-/* button */
-.cta{
+/* inline email form */
+.email-form{
 position:absolute;
 z-index:3;
 bottom:42px;
 left:50%;
 transform:translateX(-50%);
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.email-form input{
+width:220px;
+padding:12px 16px;
+border:none;
+border-radius:999px;
+font-size:14px;
+font-family:Georgia, serif;
+color:#2f2f2f;
+background:rgba(255,255,255,0.9);
+box-shadow:0 6px 24px rgba(0,0,0,0.12);
+outline:none;
+backdrop-filter:blur(10px);
+}
+
+.email-form input::placeholder{
+color:#666;
+}
+
+.email-form button{
 background:rgba(255,255,255,0.9);
 color:#2f2f2f;
-text-decoration:none;
+border:none;
 padding:12px 22px;
 font-size:14px;
 letter-spacing:0.02em;
@@ -78,111 +102,11 @@ border-radius:999px;
 box-shadow:0 6px 24px rgba(0,0,0,0.12);
 font-family:Georgia, serif;
 cursor:pointer;
-border:none;
 backdrop-filter:blur(10px);
 }
 
-.cta:hover{
+.email-form button:hover{
 background:rgba(255,255,255,0.97);
-}
-
-/* popup overlay */
-.popup{
-display:none;
-opacity:0;
-position:fixed;
-inset:0;
-background:rgba(30,25,35,0.28);
-backdrop-filter:blur(10px);
-z-index:20;
-justify-content:center;
-align-items:center;
-transition:opacity 0.28s ease;
-padding:24px;
-box-sizing:border-box;
-}
-
-/* popup card */
-.popup-shell{
-position:relative;
-width:min(560px, 100%);
-z-index:21;
-}
-
-.popup-header{
-text-align:center;
-margin-bottom:14px;
-color:#ffffff;
-font-family:Georgia, serif;
-text-shadow:0 2px 10px rgba(0,0,0,0.18);
-}
-
-.popup-title{
-font-size:28px;
-line-height:1.2;
-margin:0 0 6px 0;
-font-weight:400;
-}
-
-.popup-subtitle{
-font-size:14px;
-line-height:1.5;
-margin:0;
-opacity:0.92;
-letter-spacing:0.02em;
-}
-
-.popup-content{
-position:relative;
-width:100%;
-height:min(74vh, 700px);
-background:rgba(255,255,255,0.92);
-border-radius:22px;
-overflow:hidden;
-box-shadow:0 20px 60px rgba(0,0,0,0.22);
-border:1px solid rgba(255,255,255,0.45);
-}
-
-/* soft top glow */
-.popup-content::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-right:0;
-height:1px;
-background:rgba(255,255,255,0.9);
-z-index:2;
-}
-
-.popup iframe{
-width:100%;
-height:100%;
-border:none;
-background:#fff;
-}
-
-.close{
-position:absolute;
-top:14px;
-right:14px;
-font-size:24px;
-line-height:1;
-cursor:pointer;
-z-index:22;
-background:rgba(255,255,255,0.88);
-color:#444;
-border-radius:50%;
-width:34px;
-height:34px;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 4px 16px rgba(0,0,0,0.12);
-}
-
-.close:hover{
-background:white;
 }
 
 /* mobile */
@@ -208,35 +132,22 @@ height:auto;
 box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
-.cta{
+.email-form{
 bottom:28px;
+flex-direction:column;
+gap:8px;
+}
+
+.email-form input{
+width:190px;
+font-size:13px;
+padding:10px 14px;
+}
+
+.email-form button{
 font-size:13px;
 padding:10px 18px;
-}
-
-.popup{
-padding:14px;
-}
-
-.popup-title{
-font-size:22px;
-}
-
-.popup-subtitle{
-font-size:13px;
-}
-
-.popup-content{
-height:82vh;
-border-radius:18px;
-}
-
-.close{
-top:10px;
-right:10px;
-width:32px;
-height:32px;
-font-size:22px;
+width:190px;
 }
 
 }
@@ -260,47 +171,10 @@ alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 class="mobile-img"
 alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 
-<button class="cta" onclick="openForm()">
-Get Early Access
-</button>
-
-<div id="formPopup" class="popup">
-  <div class="popup-shell">
-    <div class="popup-header">
-      <h2 class="popup-title">Join the Early List</h2>
-      <p class="popup-subtitle">Be first to hear when The Botanical Reserve opens.</p>
-    </div>
-
-    <div class="popup-content">
-      <span class="close" onclick="closeForm()">&times;</span>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfG1H3nl3zO9Y6zNS9JJQvzZ5xmrhUDwsNMFoeocP0wtXe29A/viewform?embedded=true"></iframe>
-    </div>
-  </div>
-</div>
-
-<script>
-function openForm(){
-  const popup = document.getElementById("formPopup");
-  popup.style.display = "flex";
-  setTimeout(() => {
-    popup.style.opacity = "1";
-  }, 10);
-}
-
-function closeForm(){
-  const popup = document.getElementById("formPopup");
-  popup.style.opacity = "0";
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 280);
-}
-
-document.getElementById("formPopup").addEventListener("click", function(e){
-  if(e.target === this){
-    closeForm();
-  }
-});
-</script>
+<form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Get Early Access</button>
+</form>
 
 </body>
 </html>
