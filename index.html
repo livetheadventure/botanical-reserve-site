@@ -107,16 +107,6 @@ align-items:center;
 gap:8px;
 }
 
-/* subtle helper text */
-.form-note{
-margin:0;
-font-size:12px;
-color:rgba(55,55,55,0.88);
-text-align:center;
-letter-spacing:0.01em;
-text-shadow:0 1px 6px rgba(255,255,255,0.35);
-}
-
 /* form bar */
 .email-form{
 display:flex;
@@ -182,16 +172,37 @@ transform:scale(1.15);
 
 .top-banner{
 top:10px;
-padding:8px 14px;
-max-width:92vw;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:6px;
+padding:6px 10px;
+max-width:95vw;
+white-space:nowrap;
+text-align:center;
+}
+
+.top-banner .line1,
+.top-banner .line2,
+.top-banner .separator{
+display:inline;
+margin:0;
 }
 
 .top-banner .line1{
-font-size:12px;
+font-size:11px;
+letter-spacing:0.02em;
+}
+
+.top-banner .separator{
+font-size:10px;
+opacity:0.65;
 }
 
 .top-banner .line2{
 font-size:10px;
+font-style:italic;
+color:rgba(63,58,58,0.9);
 }
 
 .desktop-img{
@@ -212,11 +223,6 @@ box-shadow:0 10px 40px rgba(0,0,0,0.15);
 .form-wrap{
 bottom:14px;
 gap:6px;
-}
-
-.form-note{
-font-size:11px;
-max-width:220px;
 }
 
 .email-form{
@@ -258,7 +264,8 @@ The Botanical Reserve – DIY Flower Delivery Vancouver
 
 <div class="top-banner">
   <span class="line1">Flower Kits. Delivered Weekly.</span>
-  <span class="line2">Launching in select Vancouver neighbourhoods.</span>
+  <span class="separator">•</span>
+  <span class="line2">Launching in Vancouver</span>
 </div>
 
 <img src="frontpage.png"
