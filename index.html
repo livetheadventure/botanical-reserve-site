@@ -45,6 +45,38 @@ filter:blur(18px);
 transform:scale(1.1);
 }
 
+/* top announcement */
+.top-banner{
+position:fixed;
+top:16px;
+left:50%;
+transform:translateX(-50%);
+z-index:5;
+text-align:center;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,0.16);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+box-shadow:0 8px 24px rgba(0,0,0,0.08);
+color:#3f3a3a;
+max-width:90vw;
+}
+
+.top-banner .line1{
+display:block;
+font-size:14px;
+letter-spacing:0.03em;
+}
+
+.top-banner .line2{
+display:block;
+font-size:12px;
+font-style:italic;
+margin-top:2px;
+color:rgba(63,58,58,0.9);
+}
+
 /* desktop image */
 .desktop-img{
 position:relative;
@@ -148,6 +180,20 @@ background-image:url("frontpage-mobile.png");
 transform:scale(1.15);
 }
 
+.top-banner{
+top:10px;
+padding:8px 14px;
+max-width:92vw;
+}
+
+.top-banner .line1{
+font-size:12px;
+}
+
+.top-banner .line2{
+font-size:10px;
+}
+
 .desktop-img{
 display:none;
 }
@@ -210,6 +256,11 @@ The Botanical Reserve – DIY Flower Delivery Vancouver
 
 <div class="bg"></div>
 
+<div class="top-banner">
+  <span class="line1">Flower Kits. Delivered Weekly.</span>
+  <span class="line2">Launching in select Vancouver neighbourhoods.</span>
+</div>
+
 <img src="frontpage.png"
 class="desktop-img"
 alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You.">
@@ -219,8 +270,6 @@ class="mobile-img"
 alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You.">
 
 <div class="form-wrap">
- 
-
   <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
     <input type="email" name="email" placeholder="Enter your email" required>
     <input type="text" name="neighborhood" placeholder="Neighbourhood(optional)">
