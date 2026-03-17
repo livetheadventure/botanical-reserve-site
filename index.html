@@ -111,9 +111,9 @@ gap:8px;
 .email-form{
 display:flex;
 align-items:center;
-gap:8px;
+gap:10px;
 margin:0;
-padding:8px 10px;
+padding:10px 12px;
 border-radius:999px;
 background:rgba(255,255,255,0.14);
 backdrop-filter:blur(14px);
@@ -121,51 +121,50 @@ backdrop-filter:blur(14px);
 box-shadow:0 10px 30px rgba(0,0,0,0.10);
 }
 
-.email-form input{
-width:185px;
-padding:11px 14px;
-border:none;
+/* unified field style */
+.email-form input,
+.email-form select,
+.email-form button{
+height:44px;
 border-radius:999px;
-font-size:13px;
 font-family:Georgia, serif;
-color:#2f2f2f;
-background:rgba(255,255,255,0.92);
-box-shadow:0 4px 14px rgba(0,0,0,0.08);
-outline:none;
-box-sizing:border-box;
+font-size:15px;
 }
 
-.email-form select{
-width:215px;
-padding:11px 14px;
+/* input */
+.email-form input{
+width:205px;
+padding:0 16px;
 border:none;
-border-radius:999px;
-font-size:13px;
-font-family:Georgia, serif;
 color:#2f2f2f;
 background:rgba(255,255,255,0.92);
 box-shadow:0 4px 14px rgba(0,0,0,0.08);
 outline:none;
-box-sizing:border-box;
+}
+
+/* select */
+.email-form select{
+width:235px;
+padding:0 16px;
+border:none;
+color:#2f2f2f;
+background:rgba(255,255,255,0.92);
+box-shadow:0 4px 14px rgba(0,0,0,0.08);
+outline:none;
 appearance:none;
 -webkit-appearance:none;
 }
 
-.email-form input::placeholder{
-color:#666;
-}
-
+/* button */
 .email-form button{
-padding:11px 16px;
+padding:0 18px;
 border:none;
-border-radius:999px;
-font-size:13px;
-font-family:Georgia, serif;
 color:#2f2f2f;
 background:rgba(255,255,255,0.96);
 box-shadow:0 4px 14px rgba(0,0,0,0.08);
 cursor:pointer;
 white-space:nowrap;
+letter-spacing:0.02em;
 transition:background 0.2s ease, transform 0.2s ease;
 }
 
@@ -245,20 +244,11 @@ border-radius:20px;
 background:rgba(255,255,255,0.10);
 }
 
-.email-form input{
-width:210px;
-font-size:13px;
-padding:10px 12px;
-}
-
-.email-form select{
-width:210px;
-font-size:13px;
-padding:10px 12px;
-}
-
+.email-form input,
+.email-form select,
 .email-form button{
 width:210px;
+height:auto;
 font-size:13px;
 padding:10px 12px;
 }
