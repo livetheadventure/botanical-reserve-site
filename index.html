@@ -35,7 +35,6 @@ position:relative;
 }
 
 /* blurred background */
-
 .bg{
 position:fixed;
 inset:0;
@@ -58,12 +57,12 @@ display:block;
 box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
-/* MOBILE IMAGE (hidden by default) */
+/* MOBILE IMAGE */
 .mobile-img{
 display:none;
 }
 
-/* email button */
+/* CTA BUTTON */
 .cta{
 position:absolute;
 z-index:3;
@@ -75,20 +74,65 @@ color:#2f2f2f;
 text-decoration:none;
 padding:12px 22px;
 font-size:14px;
-line-height:1;
 letter-spacing:0.02em;
 border-radius:4px;
 box-shadow:0 4px 20px rgba(0,0,0,0.10);
 font-family:Georgia, serif;
-white-space:nowrap;
+cursor:pointer;
+border:none;
 }
 
 .cta:hover{
 background:white;
 }
 
-/* mobile */
+/* POPUP */
+.popup{
+display:none;
+opacity:0;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.45);
+z-index:20;
+justify-content:center;
+align-items:center;
+transition:opacity 0.25s ease;
+padding:20px;
+}
 
+.popup-content{
+position:relative;
+width:min(520px, 100%);
+height:min(80vh, 700px);
+background:#fff;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 10px 40px rgba(0,0,0,0.25);
+}
+
+.popup iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+.close{
+position:absolute;
+top:10px;
+right:14px;
+font-size:26px;
+cursor:pointer;
+z-index:21;
+background:white;
+border-radius:50%;
+width:30px;
+height:30px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* MOBILE */
 @media (max-width:768px){
 
 .bg{
@@ -96,27 +140,26 @@ background-image:url("frontpage-mobile.png");
 transform:scale(1.15);
 }
 
-/* hide desktop image */
 .desktop-img{
 display:none;
 }
 
-/* show mobile image */
 .mobile-img{
 display:block;
 position:relative;
 z-index:2;
 max-width:92vw;
 max-height:92vh;
-width:auto;
-height:auto;
-box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
 .cta{
 bottom:28px;
-padding:10px 18px;
 font-size:13px;
+padding:10px 18px;
+}
+
+.popup-content{
+height:85vh;
 }
 
 }
@@ -127,28 +170,54 @@ font-size:13px;
 
 <body>
 
-<!-- Hidden heading for Google -->
 <h1 style="position:absolute;left:-9999px;">
 The Botanical Reserve – DIY Flower Delivery Vancouver
 </h1>
 
 <div class="bg"></div>
 
-<!-- Desktop image -->
 <img src="frontpage.png"
 class="desktop-img"
-alt="The Botanical Reserve — Fresh Flowers. Designed by You."
-loading="eager">
+alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 
-<!-- Mobile image -->
 <img src="frontpage-mobile.png"
 class="mobile-img"
 alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 
-<!-- Email capture button -->
-<a href="https://forms.gle/iYEt3qF7gRcVtbXN7" target="_blank" class="cta">
+<!-- BUTTON -->
+<button class="cta" onclick="openForm()">
 Get Early Access
-</a>
+</button>
+
+<!-- POPUP -->
+<div id="formPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closeForm()">×</span>
+
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfG1H3nl3zO9Y6zNS9JJQvzZ5xmrhUDwsNMFoeocP0wtXe29A/viewform?embedded=true"></iframe>
+
+  </div>
+</div>
+
+<script>
+function openForm(){
+  const popup = document.getElementById("formPopup");
+  popup.style.display = "flex";
+  setTimeout(() => popup.style.opacity = "1", 10);
+}
+
+function closeForm(){
+  const popup = document.getElementById("formPopup");
+  popup.style.opacity = "0";
+  setTimeout(() => popup.style.display = "none", 250);
+}
+
+document.getElementById("formPopup").addEventListener("click", function(e){
+  if(e.target === this){
+    closeForm();
+  }
+});
+</script>
 
 </body>
 </html>
