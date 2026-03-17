@@ -2,21 +2,97 @@
 <html lang="en">
 <head>
 
-<title>The Botanical Reserve | DIY Flower Delivery Vancouver</title>
+<title>The Botanical Reserve | DIY Flower Kits Vancouver</title>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="description" content="DIY flower delivery in Vancouver. Fresh flowers delivered for you to design your own bouquet at home. The Botanical Reserve.">
-
+<meta name="description" content="The Botanical Reserve offers fresh flower kits delivered weekly in Vancouver. Design your own bouquet at home with curated stems and simple, beautiful presentation.">
 <meta name="robots" content="index, follow">
-
-<meta property="og:title" content="The Botanical Reserve">
-<meta property="og:description" content="Fresh Flowers. Designed by You.">
-<meta property="og:image" content="frontpage.png">
-<meta property="og:url" content="https://botanicalreserve.ca">
+<meta name="theme-color" content="#f7f3ee">
 
 <link rel="canonical" href="https://botanicalreserve.ca">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Botanical Reserve">
+<meta property="og:description" content="Fresh Flower Kits. Delivered Weekly. Designed by You.">
+<meta property="og:image" content="https://botanicalreserve.ca/frontpage.png">
+<meta property="og:url" content="https://botanicalreserve.ca">
+<meta property="og:site_name" content="The Botanical Reserve">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Botanical Reserve">
+<meta name="twitter:description" content="Fresh Flower Kits. Delivered Weekly. Designed by You.">
+<meta name="twitter:image" content="https://botanicalreserve.ca/frontpage.png">
+
+<link rel="preload" as="image" href="frontpage.png">
+<link rel="preload" as="image" href="frontpage-mobile.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://botanicalreserve.ca/#organization",
+      "name": "The Botanical Reserve",
+      "url": "https://botanicalreserve.ca",
+      "logo": "https://botanicalreserve.ca/frontpage.png",
+      "image": "https://botanicalreserve.ca/frontpage.png",
+      "description": "Fresh flower kits delivered weekly in Vancouver. Designed by you."
+    },
+    {
+      "@type": "Florist",
+      "@id": "https://botanicalreserve.ca/#business",
+      "name": "The Botanical Reserve",
+      "url": "https://botanicalreserve.ca",
+      "image": "https://botanicalreserve.ca/frontpage.png",
+      "description": "Fresh flower kits delivered weekly in Vancouver for customers to arrange at home.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vancouver",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Vancouver"
+      },
+      "knowsAbout": [
+        "DIY flower kits",
+        "Weekly flower delivery",
+        "Fresh flowers",
+        "At-home bouquet arranging"
+      ],
+      "brand": {
+        "@id": "https://botanicalreserve.ca/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://botanicalreserve.ca/#website",
+      "url": "https://botanicalreserve.ca",
+      "name": "The Botanical Reserve",
+      "publisher": {
+        "@id": "https://botanicalreserve.ca/#organization"
+      },
+      "inLanguage": "en-CA"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://botanicalreserve.ca/#webpage",
+      "url": "https://botanicalreserve.ca",
+      "name": "The Botanical Reserve | DIY Flower Kits Vancouver",
+      "isPartOf": {
+        "@id": "https://botanicalreserve.ca/#website"
+      },
+      "about": {
+        "@id": "https://botanicalreserve.ca/#business"
+      },
+      "description": "Fresh flower kits delivered weekly in Vancouver."
+    }
+  ]
+}
+</script>
 
 <style>
 html, body{
@@ -32,6 +108,20 @@ justify-content:center;
 align-items:center;
 position:relative;
 font-family:Georgia, serif;
+background:#f7f3ee;
+}
+
+/* hidden seo text */
+.visually-hidden{
+position:absolute;
+width:1px;
+height:1px;
+padding:0;
+margin:-1px;
+overflow:hidden;
+clip:rect(0,0,0,0);
+white-space:nowrap;
+border:0;
 }
 
 /* blurred background */
@@ -278,11 +368,14 @@ padding:10px 12px;
 
 <body>
 
-<h1 style="position:absolute;left:-9999px;">
-The Botanical Reserve – DIY Flower Delivery Vancouver
-</h1>
+<h1 class="visually-hidden">The Botanical Reserve – DIY Flower Kits Delivered Weekly in Vancouver</h1>
 
-<div class="bg"></div>
+<p class="visually-hidden">
+The Botanical Reserve is a Vancouver flower business offering fresh flower kits delivered weekly.
+Customers receive curated stems to arrange their own bouquet at home.
+</p>
+
+<div class="bg" aria-hidden="true"></div>
 
 <div class="top-banner">
   <span class="line1">Flower Kits. Delivered Weekly.</span>
@@ -292,17 +385,27 @@ The Botanical Reserve – DIY Flower Delivery Vancouver
 
 <img src="frontpage.png"
 class="desktop-img"
-alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You.">
+alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You."
+loading="eager"
+fetchpriority="high">
 
 <img src="frontpage-mobile.png"
 class="mobile-img"
-alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You.">
+alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by You."
+loading="eager"
+fetchpriority="high">
 
 <div class="form-wrap">
-  <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
-    <input type="email" name="email" placeholder="Enter your email" required>
+  <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form" aria-label="Join limited release form">
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      aria-label="Email address"
+      autocomplete="email"
+      required>
 
-    <select name="neighborhood">
+    <select name="neighborhood" aria-label="Select your neighbourhood">
       <option value="">Select your neighbourhood</option>
       <option>South Granville</option>
       <option>Kerrisdale</option>
