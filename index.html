@@ -135,8 +135,20 @@ outline:none;
 box-sizing:border-box;
 }
 
-.email-form input[name="neighborhood"]{
+.email-form select{
 width:175px;
+padding:11px 14px;
+border:none;
+border-radius:999px;
+font-size:13px;
+font-family:Georgia, serif;
+color:#2f2f2f;
+background:rgba(255,255,255,0.92);
+box-shadow:0 4px 14px rgba(0,0,0,0.08);
+outline:none;
+box-sizing:border-box;
+appearance:none;
+-webkit-appearance:none;
 }
 
 .email-form input::placeholder{
@@ -239,8 +251,10 @@ font-size:13px;
 padding:10px 12px;
 }
 
-.email-form input[name="neighborhood"]{
+.email-form select{
 width:210px;
+font-size:13px;
+padding:10px 12px;
 }
 
 .email-form button{
@@ -279,7 +293,23 @@ alt="The Botanical Reserve — Fresh Flower Kits. Delivered Weekly. Designed by 
 <div class="form-wrap">
   <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
     <input type="email" name="email" placeholder="Enter your email" required>
-    <input type="text" name="neighborhood" placeholder="Neighbourhood (optional)">
+
+    <select name="neighborhood">
+      <option value="">Select your neighbourhood</option>
+      <option>South Granville</option>
+      <option>Kerrisdale</option>
+      <option>Dunbar</option>
+      <option>Point Grey</option>
+      <option>UBC</option>
+      <option>Kitsilano</option>
+      <option>West End</option>
+      <option>Downtown</option>
+      <option>Yaletown</option>
+      <option>Mount Pleasant</option>
+      <option>Commercial Drive</option>
+      <option>East Vancouver</option>
+    </select>
+
     <button type="submit">Join Limited Release</button>
   </form>
 </div>
