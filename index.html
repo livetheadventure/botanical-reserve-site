@@ -62,55 +62,59 @@ box-shadow:0 10px 40px rgba(0,0,0,0.15);
 display:none;
 }
 
-/* bottom form wrap */
+/* bottom bar wrap */
 .form-wrap{
 position:fixed;
 left:50%;
-bottom:24px;
+bottom:20px;
 transform:translateX(-50%);
 z-index:4;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:10px;
-padding:14px;
-border-radius:22px;
+gap:8px;
+}
+
+/* subtle helper text */
+.form-note{
+margin:0;
+font-size:12px;
+color:rgba(55,55,55,0.88);
+text-align:center;
+letter-spacing:0.01em;
+text-shadow:0 1px 6px rgba(255,255,255,0.35);
+}
+
+/* form bar */
+.email-form{
+display:flex;
+align-items:center;
+gap:8px;
+margin:0;
+padding:8px 10px;
+border-radius:999px;
 background:rgba(255,255,255,0.14);
 backdrop-filter:blur(14px);
 -webkit-backdrop-filter:blur(14px);
 box-shadow:0 10px 30px rgba(0,0,0,0.10);
 }
 
-/* optional helper text */
-.form-note{
-margin:0 0 2px 0;
-font-size:13px;
-color:rgba(55,55,55,0.9);
-text-align:center;
-letter-spacing:0.01em;
-}
-
-/* form */
-.email-form{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:10px;
-margin:0;
-}
-
 .email-form input{
-width:260px;
-padding:13px 18px;
+width:185px;
+padding:11px 14px;
 border:none;
 border-radius:999px;
-font-size:14px;
+font-size:13px;
 font-family:Georgia, serif;
 color:#2f2f2f;
-background:rgba(255,255,255,0.90);
-box-shadow:0 6px 24px rgba(0,0,0,0.10);
+background:rgba(255,255,255,0.92);
+box-shadow:0 4px 14px rgba(0,0,0,0.08);
 outline:none;
 box-sizing:border-box;
+}
+
+.email-form input[name="neighborhood"]{
+width:175px;
 }
 
 .email-form input::placeholder{
@@ -118,22 +122,21 @@ color:#666;
 }
 
 .email-form button{
-width:260px;
-background:rgba(255,255,255,0.92);
-color:#2f2f2f;
+padding:11px 16px;
 border:none;
-padding:13px 18px;
-font-size:14px;
-letter-spacing:0.02em;
 border-radius:999px;
-box-shadow:0 6px 24px rgba(0,0,0,0.10);
+font-size:13px;
 font-family:Georgia, serif;
+color:#2f2f2f;
+background:rgba(255,255,255,0.96);
+box-shadow:0 4px 14px rgba(0,0,0,0.08);
 cursor:pointer;
+white-space:nowrap;
 transition:background 0.2s ease, transform 0.2s ease;
 }
 
 .email-form button:hover{
-background:rgba(255,255,255,0.98);
+background:white;
 transform:translateY(-1px);
 }
 
@@ -161,32 +164,37 @@ box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
 .form-wrap{
-bottom:16px;
-padding:10px 10px 12px 10px;
-gap:8px;
-border-radius:18px;
-background:rgba(255,255,255,0.10);
+bottom:14px;
+gap:6px;
 }
 
 .form-note{
-font-size:12px;
+font-size:11px;
 max-width:220px;
 }
 
 .email-form{
-gap:8px;
+flex-direction:column;
+gap:6px;
+padding:8px;
+border-radius:20px;
+background:rgba(255,255,255,0.10);
 }
 
 .email-form input{
-width:220px;
+width:210px;
 font-size:13px;
-padding:11px 14px;
+padding:10px 12px;
+}
+
+.email-form input[name="neighborhood"]{
+width:210px;
 }
 
 .email-form button{
-width:220px;
+width:210px;
 font-size:13px;
-padding:11px 14px;
+padding:10px 12px;
 }
 
 }
