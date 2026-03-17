@@ -31,6 +31,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 position:relative;
+font-family:Georgia, serif;
 }
 
 /* blurred background */
@@ -61,31 +62,55 @@ box-shadow:0 10px 40px rgba(0,0,0,0.15);
 display:none;
 }
 
-/* inline email form */
-.email-form{
-position:absolute;
-z-index:3;
-bottom:42px;
+/* bottom form wrap */
+.form-wrap{
+position:fixed;
 left:50%;
+bottom:24px;
 transform:translateX(-50%);
+z-index:4;
 display:flex;
 flex-direction:column;
 align-items:center;
 gap:10px;
+padding:14px;
+border-radius:22px;
+background:rgba(255,255,255,0.14);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+box-shadow:0 10px 30px rgba(0,0,0,0.10);
+}
+
+/* optional helper text */
+.form-note{
+margin:0 0 2px 0;
+font-size:13px;
+color:rgba(55,55,55,0.9);
+text-align:center;
+letter-spacing:0.01em;
+}
+
+/* form */
+.email-form{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+margin:0;
 }
 
 .email-form input{
-width:240px;
-padding:12px 16px;
+width:260px;
+padding:13px 18px;
 border:none;
 border-radius:999px;
 font-size:14px;
 font-family:Georgia, serif;
 color:#2f2f2f;
-background:rgba(255,255,255,0.9);
-box-shadow:0 6px 24px rgba(0,0,0,0.12);
+background:rgba(255,255,255,0.90);
+box-shadow:0 6px 24px rgba(0,0,0,0.10);
 outline:none;
-backdrop-filter:blur(10px);
+box-sizing:border-box;
 }
 
 .email-form input::placeholder{
@@ -93,22 +118,23 @@ color:#666;
 }
 
 .email-form button{
-width:240px;
-background:rgba(255,255,255,0.9);
+width:260px;
+background:rgba(255,255,255,0.92);
 color:#2f2f2f;
 border:none;
-padding:12px 18px;
+padding:13px 18px;
 font-size:14px;
 letter-spacing:0.02em;
 border-radius:999px;
-box-shadow:0 6px 24px rgba(0,0,0,0.12);
+box-shadow:0 6px 24px rgba(0,0,0,0.10);
 font-family:Georgia, serif;
 cursor:pointer;
-backdrop-filter:blur(10px);
+transition:background 0.2s ease, transform 0.2s ease;
 }
 
 .email-form button:hover{
-background:rgba(255,255,255,0.97);
+background:rgba(255,255,255,0.98);
+transform:translateY(-1px);
 }
 
 /* mobile */
@@ -134,21 +160,33 @@ height:auto;
 box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
+.form-wrap{
+bottom:16px;
+padding:10px 10px 12px 10px;
+gap:8px;
+border-radius:18px;
+background:rgba(255,255,255,0.10);
+}
+
+.form-note{
+font-size:12px;
+max-width:220px;
+}
+
 .email-form{
-bottom:28px;
 gap:8px;
 }
 
 .email-form input{
-width:190px;
+width:220px;
 font-size:13px;
-padding:10px 14px;
+padding:11px 14px;
 }
 
 .email-form button{
-width:190px;
+width:220px;
 font-size:13px;
-padding:10px 16px;
+padding:11px 14px;
 }
 
 }
@@ -172,15 +210,15 @@ alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 class="mobile-img"
 alt="The Botanical Reserve — Fresh Flowers. Designed by You.">
 
-<form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
+<div class="form-wrap">
+  <p class="form-note">Now testing in select Vancouver neighborhoods</p>
 
-  <input type="email" name="email" placeholder="Enter your email" required>
-
-  <input type="text" name="neighborhood" placeholder="Your neighborhood (optional)">
-
-  <button type="submit">Join Your Neighborhood Waitlist</button>
-
-</form>
+  <form action="https://formspree.io/f/xojkpqqv" method="POST" class="email-form">
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <input type="text" name="neighborhood" placeholder="Your neighborhood (optional)">
+    <button type="submit">Join Your Neighborhood Waitlist</button>
+  </form>
+</div>
 
 </body>
 </html>
