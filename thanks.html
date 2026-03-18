@@ -4,60 +4,435 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>You’re on the list</title>
+<title>You’re on the list | The Botanical Reserve</title>
+<meta name="description" content="Thank you for joining The Botanical Reserve early access list.">
 
 <style>
-body{
+html, body{
 margin:0;
-height:100vh;
+padding:0;
+height:100%;
+}
+
+body{
+position:relative;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 font-family:Georgia, serif;
 background:#f7f3ee;
-color:#333;
+color:#2f2a26;
 text-align:center;
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(247,243,238,0.60), rgba(247,243,238,0.60)),
+url("frontpage.png");
+background-size:cover;
+background-position:center;
+filter:blur(18px);
+transform:scale(1.08);
+opacity:0.50;
+z-index:0;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top, rgba(255,255,255,0.28), transparent 45%),
+rgba(247,243,238,0.22);
+z-index:1;
 }
 
 .container{
-max-width:420px;
-padding:24px;
+position:relative;
+z-index:2;
+width:min(92%, 540px);
+padding:48px 38px 40px;
+background:rgba(255,255,255,0.72);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.65);
+border-radius:24px;
+box-shadow:
+0 18px 55px rgba(0,0,0,0.10),
+0 2px 10px rgba(0,0,0,0.04);
+animation:fadeUp 0.9s ease-out;
+}
+
+.container::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:24px;
+padding:1px;
+background:linear-gradient(
+135deg,
+rgba(255,255,255,0.75),
+rgba(255,255,255,0.15)
+);
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+pointer-events:none;
+}
+
+.brand{
+font-size:11px;
+letter-spacing:2.2px;
+text-transform:uppercase;
+opacity:0.68;
+margin-bottom:18px;
+}
+
+.icon-wrap{
+width:68px;
+height:68px;
+margin:0 auto 20px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.62);
+border:1px solid rgba(255,255,255,0.75);
+box-shadow:0 8px 24px rgba(0,0,0,0.06);
+font-size:28px;
+line-height:1;
+}
+
+h1{
+margin:0 0 14px;
+font-size:34px;
+font-weight:normal;
+letter-spacing:0.2px;
+color:#2f2a26;
+}
+
+p{
+margin:0;
+font-size:15px;
+line-height:1.85;
+color:#4c443e;
+}
+
+.divider{
+width:58px;
+height:1px;
+margin:22px auto 22px;
+background:rgba(47,42,38,0.18);
+}
+
+.subtle{
+margin-top:20px;
+font-size:13px;
+letter-spacing:0.2px;
+color:rgba(47,42,38,0.68);
+}
+
+.actions{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.home-link,
+.share-main{
+display:inline-block;
+padding:12px 22px;
+border-radius:999px;
+text-decoration:none;
+font-size:14px;
+letter-spacing:0.2px;
+transition:
+background 0.25s ease,
+color 0.25s ease,
+transform 0.25s ease,
+box-shadow 0.25s ease,
+border-color 0.25s ease;
+cursor:pointer;
+font-family:inherit;
+}
+
+.home-link{
+color:#2f2a26;
+background:rgba(255,255,255,0.72);
+border:1px solid rgba(47,42,38,0.14);
+box-shadow:0 6px 20px rgba(0,0,0,0.04);
+}
+
+.home-link:hover{
+background:#2f2a26;
+color:#fff;
+transform:translateY(-1px);
+box-shadow:0 10px 24px rgba(0,0,0,0.10);
+}
+
+.share-main{
+color:#2f2a26;
+background:transparent;
+border:1px solid rgba(47,42,38,0.10);
+}
+
+.share-main:hover{
+background:rgba(255,255,255,0.55);
+transform:translateY(-1px);
+border-color:rgba(47,42,38,0.18);
+box-shadow:0 10px 24px rgba(0,0,0,0.06);
+}
+
+.share-options{
+margin-top:18px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.share-pill{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:10px 16px;
+border-radius:999px;
+text-decoration:none;
+font-size:13px;
+letter-spacing:0.2px;
+color:#2f2a26;
+background:rgba(255,255,255,0.55);
+border:1px solid rgba(47,42,38,0.10);
+transition:
+background 0.25s ease,
+transform 0.25s ease,
+border-color 0.25s ease,
+box-shadow 0.25s ease;
+cursor:pointer;
+font-family:inherit;
+}
+
+.share-pill:hover{
+background:#fff;
+transform:translateY(-1px);
+border-color:rgba(47,42,38,0.18);
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+.share-note{
+margin-top:16px;
+font-size:12px;
+color:rgba(47,42,38,0.56);
+line-height:1.6;
+}
+
+.note{
+margin-top:18px;
+font-size:12px;
+color:rgba(47,42,38,0.50);
+}
+
+button{
+appearance:none;
+-webkit-appearance:none;
+border:none;
+}
+
+.toast{
+position:fixed;
+bottom:24px;
+left:50%;
+transform:translateX(-50%) translateY(20px);
+background:#2f2a26;
+color:#fff;
+padding:10px 18px;
+border-radius:999px;
+font-size:13px;
+letter-spacing:0.2px;
+opacity:0;
+pointer-events:none;
+transition:all 0.35s ease;
+z-index:999;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.toast.show{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(14px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media (max-width: 480px){
+.container{
+padding:36px 24px 32px;
+border-radius:20px;
+}
+
+.icon-wrap{
+width:60px;
+height:60px;
+font-size:24px;
+margin-bottom:18px;
+}
+
+.brand{
+font-size:10px;
+letter-spacing:2px;
+margin-bottom:16px;
 }
 
 h1{
 font-size:28px;
-margin-bottom:12px;
-font-weight:normal;
 }
 
 p{
-font-size:15px;
-line-height:1.6;
-margin:0;
+font-size:14px;
+line-height:1.8;
 }
 
-.subtle{
-margin-top:22px;
-font-size:13px;
-opacity:0.6;
+.actions{
+margin-top:26px;
+}
+
+.home-link,
+.share-main{
+width:100%;
+max-width:260px;
+}
+
+.share-options{
+gap:8px;
+}
+
+.share-pill{
+width:100%;
+max-width:260px;
+}
 }
 </style>
-</head>
 
+<meta http-equiv="refresh" content="15;url=/" />
+
+</head>
 <body>
 
 <div class="container">
+  <div class="brand">The Botanical Reserve</div>
+
+  <div class="icon-wrap">✓</div>
+
   <h1>You’re on the list.</h1>
 
   <p>
-    You’ll be the first to hear when early access opens.<br><br>
-    Details for the first Botanical Reserve delivery will be shared soon.
+    Thank you for joining our early access list.<br><br>
+    You’ll be among the first to hear when The Botanical Reserve opens,
+    along with details for the first limited delivery release.
   </p>
+
+  <div class="divider"></div>
 
   <p class="subtle">
     Keep an eye on your inbox.
   </p>
+
+  <div class="actions">
+    <a href="/" class="home-link">Return Home</a>
+    <button type="button" class="share-main" id="shareButton">Share with a Friend</button>
+  </div>
+
+  <div class="share-options">
+    <button type="button" class="share-pill" id="copyButton">Copy Link</button>
+    <a class="share-pill" id="emailShare" href="#">Email</a>
+    <a class="share-pill" id="whatsappShare" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <div class="share-note">
+    Know someone who would love fresh flower kits? Send them our website.
+  </div>
+
+  <div class="note">
+    Returning you to the homepage shortly…
+  </div>
 </div>
+
+<div id="toast" class="toast">Link copied</div>
+
+<script>
+const shareUrl = "https://botanicalreserve.ca";
+const shareTitle = "The Botanical Reserve";
+const shareText = "I thought you might like this: The Botanical Reserve — fresh flower kits delivered weekly.";
+
+const encodedSubject = encodeURIComponent(shareTitle);
+const encodedBody = encodeURIComponent(shareText + " " + shareUrl);
+const encodedWhatsApp = encodeURIComponent(shareText + " " + shareUrl);
+
+document.getElementById("emailShare").href =
+  "mailto:?subject=" + encodedSubject + "&body=" + encodedBody;
+
+document.getElementById("whatsappShare").href =
+  "https://wa.me/?text=" + encodedWhatsApp;
+
+const toast = document.getElementById("toast");
+let toastTimeout;
+
+function showToast(message){
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+document.getElementById("copyButton").addEventListener("click", async function(){
+  try{
+    await navigator.clipboard.writeText(shareUrl);
+    showToast("Link copied");
+  }catch(error){
+    showToast("Copy not supported");
+  }
+});
+
+document.getElementById("shareButton").addEventListener("click", async function(){
+  if(navigator.share){
+    try{
+      await navigator.share({
+        title: shareTitle,
+        text: shareText,
+        url: shareUrl
+      });
+    }catch(error){
+    }
+  }else{
+    try{
+      await navigator.clipboard.writeText(shareUrl);
+      showToast("Link copied");
+    }catch(error){
+      showToast("Use the options below");
+    }
+  }
+});
+</script>
 
 </body>
 </html>
