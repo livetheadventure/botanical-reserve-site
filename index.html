@@ -38,6 +38,7 @@ body {
   position: relative;
   font-family: 'Playfair Display', serif;
   background: #f7f3ee;
+  overflow-x: hidden;
 }
 
 /* background */
@@ -63,6 +64,7 @@ body {
   border-radius: 999px;
   background: rgba(255,255,255,0.16);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   color: #3f3a3a;
   font-size: 15px;
@@ -135,6 +137,7 @@ body {
   border-radius: 999px;
   background: rgba(255,255,255,0.14);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
@@ -177,13 +180,14 @@ body {
 /* MOBILE ONLY */
 @media (max-width: 768px) {
   html, body {
-    height: auto;
+    height: 100%;
   }
 
   body {
     display: block;
     position: relative;
     overflow-x: hidden;
+    overflow-y: hidden;
     background: #f7f3ee;
   }
 
@@ -192,27 +196,37 @@ body {
     display: none;
   }
 
-  /* top section behaves like full hero */
+  .top-banner {
+    top: calc(env(safe-area-inset-top, 0px) + 14px);
+    font-size: 14px;
+    padding: 11px 22px;
+  }
+
+  /* move title into the sky */
   .hero-text {
-    top: 47%;
-    transform: translate(-50%, -50%);
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, 0);
     width: 88%;
     z-index: 3;
   }
 
   .hero-text .brand {
-    font-size: 29px;
-    margin-bottom: 14px;
-    line-height: 1.08;
+    font-size: 31px;
+    margin-bottom: 12px;
+    line-height: 1.04;
+    letter-spacing: 0.04em;
   }
 
   .hero-text .sub {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 15px;
+    margin-bottom: 7px;
+    line-height: 1.2;
   }
 
   .hero-text .tag {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.2;
   }
 
   .desktop-img {
@@ -222,71 +236,52 @@ body {
     max-width: none;
     max-height: none;
     object-fit: cover;
-    object-position: center 38%;
+    object-position: center 44%;
     box-shadow: none;
   }
 
-  /* hide desktop floating form on mobile */
+  /* hide desktop form on mobile */
   .form-wrap {
     display: none;
   }
 
-  /* mobile quick email pinned over image bottom */
+  /* hide old click-to-open mobile input */
   .quick-email {
+    display: none;
+  }
+
+  /* show full form directly on hero so no scrolling needed */
+  .full-form-section {
     display: block;
     position: absolute;
     left: 50%;
-    bottom: 20px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
     transform: translateX(-50%);
     width: 88%;
     max-width: 360px;
+    padding: 0;
+    background: transparent;
     z-index: 4;
   }
 
-  .quick-email input {
-    width: 100%;
-    height: 54px;
-    border-radius: 999px;
-    border: none;
-    padding: 0 20px;
-    font-size: 15px;
-    font-family: 'Playfair Display', serif;
-    background: rgba(255,255,255,0.96);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .quick-email input::placeholder {
-    color: #b7b1ab;
-    opacity: 1;
-  }
-
-  /* full form shown only on mobile below hero */
-  .full-form-section {
-    display: flex;
-    justify-content: center;
-    padding: 28px 20px 40px;
-    background: #f7f3ee;
-    scroll-margin-top: 18px;
-  }
-
   .full-form-section .email-form {
+    display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
-    max-width: 360px;
-    background: white;
-    padding: 16px;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.16);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 10px;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
   }
 
   .full-form-section input,
   .full-form-section select,
   .full-form-section button {
     width: 100%;
-    height: 52px;
+    height: 50px;
     border-radius: 999px;
     border: none;
     padding: 0 18px;
@@ -296,13 +291,13 @@ body {
 
   .full-form-section input,
   .full-form-section select {
-    background: #f8f8f8;
+    background: rgba(255,255,255,0.96);
     color: #000;
   }
 
   .full-form-section button {
-    background: #000;
-    color: #fff;
+    background: white;
+    color: #000;
     cursor: pointer;
   }
 }
@@ -369,12 +364,12 @@ body {
   </form>
 </div>
 
-<!-- MOBILE QUICK EMAIL -->
+<!-- OLD MOBILE QUICK EMAIL HIDDEN NOW -->
 <div class="quick-email">
   <input id="quickEmail" type="text" placeholder="Enter your email" readonly>
 </div>
 
-<!-- MOBILE FULL FORM BELOW -->
+<!-- MOBILE FULL FORM NOW SITS ON HERO -->
 <div id="fullForm" class="full-form-section">
   <form class="email-form">
     <input id="mainEmail" type="email" placeholder="Enter your email" required>
@@ -417,29 +412,6 @@ body {
     <button type="submit">Join Limited Release</button>
   </form>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const quickEmail = document.getElementById("quickEmail");
-  const mainEmail = document.getElementById("mainEmail");
-  const fullForm = document.getElementById("fullForm");
-
-  if (!quickEmail || !mainEmail || !fullForm) return;
-
-  function openForm() {
-    if (window.innerWidth > 768) return;
-
-    fullForm.scrollIntoView({ behavior: "smooth", block: "start" });
-
-    setTimeout(() => {
-      mainEmail.focus({ preventScroll: true });
-    }, 450);
-  }
-
-  quickEmail.addEventListener("click", openForm);
-  quickEmail.addEventListener("focus", openForm);
-});
-</script>
 
 </body>
 </html>
