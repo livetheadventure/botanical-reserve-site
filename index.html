@@ -5,7 +5,7 @@
 <title>The Botanical Reserve | DIY Flower Kits Vancouver</title>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="The Botanical Reserve offers fresh flower kits delivered weekly in Vancouver. Design your own bouquet at home with curated stems and simple, beautiful presentation.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f7f3ee">
@@ -21,23 +21,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+*{
+box-sizing:border-box;
+}
+
 html, body{
 margin:0;
 padding:0;
-height:100%;
-overflow:hidden;
+width:100%;
+min-height:100%;
 }
 
 body{
-display:flex;
-justify-content:center;
-align-items:center;
 position:relative;
 font-family:'Playfair Display', serif;
 background:#f7f3ee;
+overflow-x:hidden;
 }
 
-/* background */
+/* blurred background for desktop */
 .bg{
 position:fixed;
 inset:0;
@@ -60,6 +62,7 @@ padding:10px 20px;
 border-radius:999px;
 background:rgba(255,255,255,0.16);
 backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
 box-shadow:0 8px 24px rgba(0,0,0,0.08);
 color:#3f3a3a;
 font-size:15px;
@@ -106,12 +109,15 @@ line-height:1.3;
 text-shadow:0 2px 10px rgba(255,255,255,0.35);
 }
 
-/* image */
+/* main image */
 .desktop-img{
+display:block;
 position:relative;
 z-index:2;
+width:auto;
 max-width:100%;
 max-height:100vh;
+margin:0 auto;
 box-shadow:0 10px 40px rgba(0,0,0,0.15);
 }
 
@@ -131,6 +137,7 @@ padding:10px;
 border-radius:999px;
 background:rgba(255,255,255,0.14);
 backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
 box-shadow:0 8px 24px rgba(0,0,0,0.08);
 }
 
@@ -143,7 +150,6 @@ border:none;
 font-family:'Playfair Display', serif;
 padding:0 14px;
 font-size:15px;
-box-sizing:border-box;
 }
 
 .email-form input,
@@ -165,42 +171,45 @@ align-items:center;
 justify-content:center;
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media (max-width:768px){
 
 html, body{
-height:100%;
-overflow:hidden;
+width:100%;
+min-height:100%;
 }
 
 body{
-display:block;
+min-height:100svh;
+min-height:100dvh;
+overflow-x:hidden;
+overflow-y:auto;
 }
 
-/* remove blur */
+/* no blur layer on mobile */
 .bg{
 display:none;
 }
 
-/* full screen image */
+/* full-screen hero image */
 .desktop-img{
 position:fixed;
-top:0;
-left:0;
+inset:0;
 width:100%;
-height:100%;
+height:100svh;
+height:100dvh;
 max-width:none;
 max-height:none;
 object-fit:cover;
-object-position:center 45%;
+object-position:center 42%;
 z-index:1;
 box-shadow:none;
 }
 
-/* text */
+/* text sits in upper sky area */
 .hero-text{
-position:absolute;
-top:18%;
+position:fixed;
+top:17%;
 left:50%;
 transform:translate(-50%, -50%);
 width:88%;
@@ -210,37 +219,48 @@ z-index:3;
 
 .hero-text .brand{
 font-size:28px;
-letter-spacing:0.04em;
+letter-spacing:0.03em;
 margin-bottom:8px;
+line-height:1.1;
 }
 
 .hero-text .sub{
 font-size:16px;
 margin-bottom:6px;
+line-height:1.25;
 }
 
 .hero-text .tag{
 font-size:14px;
+line-height:1.25;
 }
 
-/* LOWER + SMALLER FORM */
+/* keep banner clear of browser UI */
+.top-banner{
+top:calc(env(safe-area-inset-top) + 14px);
+font-size:14px;
+padding:10px 18px;
+}
+
+/* lower form so it stops covering bike basket area */
 .form-wrap{
 position:fixed;
 left:50%;
 transform:translateX(-50%);
-bottom:max(2px, env(safe-area-inset-bottom));
-width:88%;
+bottom:calc(env(safe-area-inset-bottom) + 12px);
+width:min(88%, 360px);
 z-index:4;
 }
 
 .email-form{
 display:flex;
 flex-direction:column;
-gap:6px;
-padding:10px;
-border-radius:18px;
+gap:8px;
+padding:12px;
+border-radius:20px;
 background:rgba(255,255,255,0.18);
 backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
 box-shadow:0 8px 24px rgba(0,0,0,0.08);
 }
 
@@ -248,18 +268,25 @@ box-shadow:0 8px 24px rgba(0,0,0,0.08);
 .email-form select,
 .email-form button{
 width:100%;
-height:42px;
-font-size:14px !important;
+height:50px;
+font-size:14px;
 padding:0 18px;
+border-radius:999px;
 }
 
 .email-form button{
-color:#000 !important;
+color:#000;
 background:white;
 display:flex;
 align-items:center;
 justify-content:center;
 white-space:nowrap;
+}
+
+/* optional: slightly lighter placeholder */
+.email-form input::placeholder{
+color:#8f8a8a;
+opacity:1;
 }
 }
 </style>
@@ -280,49 +307,49 @@ white-space:nowrap;
   <div class="tag">Designed by You.</div>
 </div>
 
-<img src="frontpage.png" class="desktop-img">
+<img src="frontpage.png" class="desktop-img" alt="The Botanical Reserve floral bicycle scene">
 
 <div class="form-wrap">
-<form class="email-form">
-<input type="email" placeholder="Enter your email" required>
+  <form class="email-form">
+    <input type="email" placeholder="Enter your email" required>
 
-<select required>
-<option value="">Select your neighbourhood</option>
-<option>Dunbar</option>
-<option>Kerrisdale</option>
-<option>South Granville</option>
-<option>Shaughnessy</option>
-<option>Point Grey</option>
-<option>West Point Grey</option>
-<option>Arbutus Ridge</option>
-<option>South Cambie</option>
-<option>Oakridge</option>
-<option>Kitsilano</option>
-<option>Fairview</option>
-<option>West End</option>
-<option>Downtown</option>
-<option>Yaletown</option>
-<option>Olympic Village</option>
-<option>False Creek</option>
-<option>Mount Pleasant</option>
-<option>Main Street</option>
-<option>Riley Park</option>
-<option>Cambie Village</option>
-<option>Marpole</option>
-<option>Sunset</option>
-<option>Killarney</option>
-<option>Renfrew-Collingwood</option>
-<option>Hastings-Sunrise</option>
-<option>Grandview-Woodland</option>
-<option>Cedar Cottage</option>
-<option>Kensington-Cedar Cottage</option>
-<option>Victoria-Fraserview</option>
-<option>Strathcona</option>
-<option>Chinatown</option>
-</select>
+    <select required>
+      <option value="">Select your neighbourhood</option>
+      <option>Dunbar</option>
+      <option>Kerrisdale</option>
+      <option>South Granville</option>
+      <option>Shaughnessy</option>
+      <option>Point Grey</option>
+      <option>West Point Grey</option>
+      <option>Arbutus Ridge</option>
+      <option>South Cambie</option>
+      <option>Oakridge</option>
+      <option>Kitsilano</option>
+      <option>Fairview</option>
+      <option>West End</option>
+      <option>Downtown</option>
+      <option>Yaletown</option>
+      <option>Olympic Village</option>
+      <option>False Creek</option>
+      <option>Mount Pleasant</option>
+      <option>Main Street</option>
+      <option>Riley Park</option>
+      <option>Cambie Village</option>
+      <option>Marpole</option>
+      <option>Sunset</option>
+      <option>Killarney</option>
+      <option>Renfrew-Collingwood</option>
+      <option>Hastings-Sunrise</option>
+      <option>Grandview-Woodland</option>
+      <option>Cedar Cottage</option>
+      <option>Kensington-Cedar Cottage</option>
+      <option>Victoria-Fraserview</option>
+      <option>Strathcona</option>
+      <option>Chinatown</option>
+    </select>
 
-<button type="submit">Join Limited Release</button>
-</form>
+    <button type="submit">Join Limited Release</button>
+  </form>
 </div>
 
 </body>
