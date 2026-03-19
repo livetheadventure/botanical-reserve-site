@@ -179,10 +179,16 @@ body {
 
 /* MOBILE ONLY */
 @media (max-width: 768px) {
+  html, body {
+    height: 100%;
+  }
 
   body {
     display: block;
+    position: relative;
+    overflow-x: hidden;
     overflow-y: hidden;
+    background: #f7f3ee;
   }
 
   .bg {
@@ -200,24 +206,33 @@ body {
     left: 50%;
     transform: translate(-50%, 0);
     width: 88%;
+    z-index: 3;
   }
 
   .hero-text .brand {
     font-size: 29px;
+    margin-bottom: 12px;
+    line-height: 1.04;
+    letter-spacing: 0.04em;
   }
 
   .hero-text .sub {
     font-size: 15px;
+    margin-bottom: 7px;
+    line-height: 1.2;
   }
 
   .hero-text .tag {
     font-size: 13px;
+    line-height: 1.2;
   }
 
   .desktop-img {
     width: 100%;
     height: 100svh;
     height: 100dvh;
+    max-width: none;
+    max-height: none;
     object-fit: cover;
     object-position: center 44%;
     box-shadow: none;
@@ -231,7 +246,6 @@ body {
     display: none;
   }
 
-  /* FINAL PERFECT POSITION */
   .full-form-section {
     display: block;
     position: absolute;
@@ -241,6 +255,8 @@ body {
     transform-origin: bottom center;
     width: 80%;
     max-width: 300px;
+    padding: 0;
+    background: transparent;
     z-index: 4;
   }
 
@@ -248,19 +264,38 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
     background: rgba(255,255,255,0.14);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 8px;
     border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
 
   .full-form-section input,
   .full-form-section select,
   .full-form-section button {
+    width: 100%;
     height: 42px;
+    border-radius: 999px;
+    border: none;
+    padding: 0 14px;
+    font-family: 'Playfair Display', serif;
     font-size: 13px;
   }
 
+  .full-form-section input,
+  .full-form-section select {
+    background: rgba(255,255,255,0.96);
+    color: #000;
+  }
+
+  .full-form-section button {
+    background: white;
+    color: #000;
+    cursor: pointer;
+  }
 }
 </style>
 </head>
@@ -279,11 +314,60 @@ body {
   <div class="tag">Designed by You.</div>
 </div>
 
-<img src="frontpage.png" class="desktop-img">
+<img src="frontpage.png" class="desktop-img" alt="The Botanical Reserve">
 
-<div id="fullForm" class="full-form-section">
+<!-- DESKTOP FORM -->
+<div class="form-wrap">
   <form class="email-form">
     <input type="email" placeholder="Enter your email" required>
+
+    <select required>
+      <option value="">Select your neighbourhood</option>
+      <option>Dunbar</option>
+      <option>Kerrisdale</option>
+      <option>South Granville</option>
+      <option>Shaughnessy</option>
+      <option>Point Grey</option>
+      <option>West Point Grey</option>
+      <option>Arbutus Ridge</option>
+      <option>South Cambie</option>
+      <option>Oakridge</option>
+      <option>Kitsilano</option>
+      <option>Fairview</option>
+      <option>West End</option>
+      <option>Downtown</option>
+      <option>Yaletown</option>
+      <option>Olympic Village</option>
+      <option>False Creek</option>
+      <option>Mount Pleasant</option>
+      <option>Main Street</option>
+      <option>Riley Park</option>
+      <option>Cambie Village</option>
+      <option>Marpole</option>
+      <option>Sunset</option>
+      <option>Killarney</option>
+      <option>Renfrew-Collingwood</option>
+      <option>Hastings-Sunrise</option>
+      <option>Grandview-Woodland</option>
+      <option>Cedar Cottage</option>
+      <option>Kensington-Cedar Cottage</option>
+      <option>Victoria-Fraserview</option>
+      <option>Strathcona</option>
+      <option>Chinatown</option>
+    </select>
+
+    <button type="submit">Join Limited Release</button>
+  </form>
+</div>
+
+<div class="quick-email">
+  <input id="quickEmail" type="text" placeholder="Enter your email" readonly>
+</div>
+
+<!-- MOBILE FULL FORM -->
+<div id="fullForm" class="full-form-section">
+  <form class="email-form">
+    <input id="mainEmail" type="email" placeholder="Enter your email" required>
 
     <select required>
       <option value="">Select your neighbourhood</option>
