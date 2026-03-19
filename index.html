@@ -79,7 +79,6 @@ max-width:800px;
 width:90%;
 }
 
-/* main title */
 .hero-text .brand{
 font-size:42px;
 letter-spacing:0.08em;
@@ -88,14 +87,12 @@ margin-bottom:14px;
 line-height:1.1;
 }
 
-/* subtitle */
 .hero-text .sub{
 font-size:20px;
 margin-bottom:10px;
 line-height:1.3;
 }
 
-/* tagline */
 .hero-text .tag{
 font-size:18px;
 font-style:italic;
@@ -103,7 +100,6 @@ opacity:0.85;
 line-height:1.3;
 }
 
-/* readability */
 .hero-text .brand,
 .hero-text .sub,
 .hero-text .tag{
@@ -181,12 +177,12 @@ body{
 display:block;
 }
 
-/* remove blurred background block on mobile */
+/* remove blur */
 .bg{
 display:none;
 }
 
-/* make image fill full mobile screen */
+/* full screen image */
 .desktop-img{
 position:fixed;
 top:0;
@@ -201,7 +197,7 @@ z-index:1;
 box-shadow:none;
 }
 
-/* move text into sky */
+/* text in sky */
 .hero-text{
 position:absolute;
 top:18%;
@@ -230,36 +226,39 @@ font-size:14px;
 line-height:1.3;
 }
 
-/* form at bottom over image */
+/* FIXED FORM POSITION (LOWER + SAFE AREA) */
 .form-wrap{
 position:fixed;
-bottom:20px;
+bottom:max(8px, env(safe-area-inset-bottom));
 left:50%;
 transform:translateX(-50%);
 width:90%;
 z-index:4;
 }
 
+/* slightly smaller form */
 .email-form{
 display:flex;
 flex-direction:column;
-gap:10px;
-padding:14px;
+gap:8px;
+padding:12px;
 border-radius:20px;
 background:rgba(255,255,255,0.18);
 backdrop-filter:blur(10px);
 box-shadow:0 8px 24px rgba(0,0,0,0.08);
 }
 
+/* smaller inputs */
 .email-form input,
 .email-form select,
 .email-form button{
 width:100%;
 min-width:0;
-height:48px;
+height:44px;
 font-size:14px !important;
 }
 
+/* button fix */
 .email-form button{
 color:#000 !important;
 background:white;
