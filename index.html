@@ -46,13 +46,13 @@ body {
   display: none;
 }
 
-/* ===== ELITE INTRO FLOWERS ===== */
+/* ===== DESKTOP-ONLY ELITE FLOWER INTRO ===== */
 .flower-intro {
   position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 2; /* above image, below text/form */
+  z-index: 2;
   opacity: 1;
   transition: opacity 2.4s ease;
 }
@@ -342,19 +342,8 @@ body {
     min-width: 0;
   }
 
-  /* lighter flowers on mobile */
-  .flower-layer.back .flower-particle {
-    filter: blur(0.32px);
-    opacity: 0.24;
-  }
-
-  .flower-layer.mid .flower-particle {
-    filter: blur(0.10px);
-    opacity: 0.40;
-  }
-
-  .flower-layer.front .flower-particle {
-    opacity: 0.56;
+  .flower-intro {
+    display: none;
   }
 }
 </style>
@@ -465,7 +454,7 @@ body {
 </div>
 
 <script>
-/* ===== ONCE-PER-VISITOR ELITE FLOWER INTRO ===== */
+/* ===== DESKTOP-ONLY ONCE-PER-VISITOR ELITE FLOWER INTRO ===== */
 (function () {
   const intro = document.getElementById('flowerIntro');
   const back = document.getElementById('flowerBack');
@@ -473,6 +462,12 @@ body {
   const front = document.getElementById('flowerFront');
 
   if (!intro || !back || !mid || !front) return;
+
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    intro.remove();
+    return;
+  }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) {
@@ -488,8 +483,6 @@ body {
   }
 
   localStorage.setItem(introSeenKey, 'true');
-
-  const isMobile = window.innerWidth <= 768;
 
   const PALETTE = {
     daisyWhite: ['#fbf7f1', '#f7f1ea', '#f4eee6'],
@@ -603,7 +596,6 @@ body {
       opacity = rand(0.56, 0.90);
     }
 
-    /* spawn only in upper sky zone */
     el.style.left = rand(12, 88) + 'vw';
     el.style.top = rand(-90, -18) + 'px';
     el.style.width = size + 'px';
@@ -627,25 +619,13 @@ body {
     }
   }
 
-  let backInterval, midInterval, frontInterval;
+  burst(back, 'back', 8, 2200);
+  burst(mid, 'mid', 6, 2200);
+  burst(front, 'front', 5, 2200);
 
-  if (isMobile) {
-    burst(back, 'back', 4, 1800);
-    burst(mid, 'mid', 3, 1800);
-    burst(front, 'front', 2, 1800);
-
-    backInterval = setInterval(() => createFlower(back, 'back'), 1800);
-    midInterval = setInterval(() => createFlower(mid, 'mid'), 2400);
-    frontInterval = setInterval(() => createFlower(front, 'front'), 3200);
-  } else {
-    burst(back, 'back', 8, 2200);
-    burst(mid, 'mid', 6, 2200);
-    burst(front, 'front', 5, 2200);
-
-    backInterval = setInterval(() => createFlower(back, 'back'), 1000);
-    midInterval = setInterval(() => createFlower(mid, 'mid'), 1350);
-    frontInterval = setInterval(() => createFlower(front, 'front'), 1800);
-  }
+  const backInterval = setInterval(() => createFlower(back, 'back'), 1000);
+  const midInterval = setInterval(() => createFlower(mid, 'mid'), 1350);
+  const frontInterval = setInterval(() => createFlower(front, 'front'), 1800);
 
   setTimeout(() => {
     intro.classList.add('fade-out');
