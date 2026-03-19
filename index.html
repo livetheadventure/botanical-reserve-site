@@ -32,14 +32,16 @@ html, body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   font-family: 'Playfair Display', serif;
   background: #f7f3ee;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
-/* full-screen background image */
+/* background */
 .bg {
   display: none;
 }
@@ -103,7 +105,7 @@ body {
   text-shadow: 0 2px 10px rgba(255,255,255,0.35);
 }
 
-/* main image now fills desktop too */
+/* image */
 .desktop-img {
   position: fixed;
   inset: 0;
@@ -136,7 +138,6 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
-/* interaction */
 .email-form input:focus,
 .email-form select:focus {
   outline: none;
@@ -263,6 +264,7 @@ body {
     gap: 8px;
     background: rgba(255,255,255,0.14);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 8px;
     border-radius: 18px;
   }
@@ -272,6 +274,8 @@ body {
   .full-form-section button {
     height: 42px;
     font-size: 13px;
+    width: 100%;
+    min-width: 0;
   }
 }
 </style>
