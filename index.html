@@ -46,6 +46,68 @@ body {
   display: none;
 }
 
+/* elite flower intro */
+.petal-intro{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 2.5s ease;
+}
+
+.petal-intro.fade-out{
+  opacity: 0;
+}
+
+.petal-layer{
+  position: absolute;
+  inset: 0;
+}
+
+.petal{
+  position: absolute;
+  top: -60px;
+  animation: fall linear forwards;
+  will-change: transform, opacity;
+}
+
+.back .petal{
+  filter: blur(0.6px);
+  opacity: 0.4;
+}
+
+.mid .petal{
+  filter: blur(0.2px);
+  opacity: 0.65;
+}
+
+.front .petal{
+  opacity: 0.9;
+}
+
+.petal svg{
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+}
+
+@keyframes fall{
+  0%{
+    transform: translate3d(0,0,0) rotate(0deg);
+    opacity: 0;
+  }
+  10%{
+    opacity: var(--o);
+  }
+  100%{
+    transform: translate3d(var(--x), 110vh, 0) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
 /* top banner */
 .top-banner {
   position: fixed;
@@ -278,11 +340,21 @@ body {
     width: 100%;
     min-width: 0;
   }
+
+  .petal-intro{
+    display: none;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<div class="petal-intro" aria-hidden="true">
+  <div class="petal-layer back" id="petalBack"></div>
+  <div class="petal-layer mid" id="petalMid"></div>
+  <div class="petal-layer front" id="petalFront"></div>
+</div>
 
 <div class="bg"></div>
 
@@ -381,6 +453,116 @@ body {
 </div>
 
 <script>
+(function () {
+  const intro = document.querySelector('.petal-intro');
+  const back = document.getElementById('petalBack');
+  const mid = document.getElementById('petalMid');
+  const front = document.getElementById('petalFront');
+
+  if (!intro || !back || !mid || !front) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    intro.remove();
+    return;
+  }
+
+  const COLORS = [
+    '#f6efe7',
+    '#f2d9d2',
+    '#edd3cc',
+    '#f4e4dc',
+    '#e8cfc8',
+    '#f5eedf',
+    '#f1d8e6',
+    '#efe7c9'
+  ];
+
+  function rand(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function petal(color) {
+    return `
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 4C26 10 32 16 30 25C28 34 23 38 20 38C17 38 12 34 10 25C8 16 14 10 20 4Z" fill="${color}"/>
+      </svg>
+    `;
+  }
+
+  function create(layer, depth) {
+    const el = document.createElement('div');
+    el.className = 'petal';
+
+    let size, duration, drift, rotate, opacity;
+
+    if (depth === 'back') {
+      size = rand(10, 16);
+      duration = rand(10, 14);
+      drift = rand(-40, 40);
+      rotate = rand(60, 140);
+      opacity = rand(0.3, 0.5);
+    } else if (depth === 'mid') {
+      size = rand(14, 22);
+      duration = rand(8, 11);
+      drift = rand(-60, 60);
+      rotate = rand(100, 220);
+      opacity = rand(0.5, 0.75);
+    } else {
+      size = rand(18, 28);
+      duration = rand(6, 9);
+      drift = rand(-80, 80);
+      rotate = rand(140, 320);
+      opacity = rand(0.7, 0.95);
+    }
+
+    const xStart = rand(12, 88);
+    const yOffset = rand(-90, -20);
+
+    el.style.left = xStart + 'vw';
+    el.style.top = yOffset + 'px';
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.animationDuration = duration + 's';
+    el.style.setProperty('--x', drift + 'px');
+    el.style.setProperty('--r', rotate + 'deg');
+    el.style.setProperty('--o', opacity);
+    el.innerHTML = petal(pick(COLORS));
+
+    layer.appendChild(el);
+    setTimeout(() => el.remove(), duration * 1000);
+  }
+
+  function burst(layer, depth, count) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => create(layer, depth), rand(0, 2200));
+    }
+  }
+
+  burst(back, 'back', 10);
+  burst(mid, 'mid', 8);
+  burst(front, 'front', 6);
+
+  const backInterval = setInterval(() => create(back, 'back'), 900);
+  const midInterval = setInterval(() => create(mid, 'mid'), 1200);
+  const frontInterval = setInterval(() => create(front, 'front'), 1600);
+
+  setTimeout(() => {
+    intro.classList.add('fade-out');
+    clearInterval(backInterval);
+    clearInterval(midInterval);
+    clearInterval(frontInterval);
+  }, 10000);
+
+  setTimeout(() => {
+    intro.remove();
+  }, 12500);
+})();
+
 document.querySelectorAll('.email-form').forEach(form => {
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
