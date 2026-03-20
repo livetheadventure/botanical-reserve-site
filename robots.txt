@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://botanicalreserve.ca/sitemap.xml
